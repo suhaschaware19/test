@@ -1,0 +1,110 @@
+<div class="mat-typography mat-body-1">
+  <mat-sidenav-container class="sidenav-container" fullscreen autosize>
+    <mat-sidenav
+      id="sidenav"
+      #drawer
+      class="sidenav "
+      mode="over"
+      fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)"
+    >
+      <span class="toolbar-filler"></span>
+      <div>
+        <div class="profileImagecontainer">
+          <div class="d-flex justify-content-center h-100">
+            <div class="image_outer_container">
+              <div class="image_inner_container">
+                <img src="../../assets/profile_img/my.jpg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-nav-list>
+        <div>
+          <mat-divider></mat-divider>
+          <a
+            mat-list-item
+            class="sidenav-link"
+            [routerLink]="['/comp1']"
+            (click)="drawer.toggle()"
+          >
+            <mat-icon mat-list-icon>people_outline</mat-icon>
+            <span class="title" mat-line>Cusstomer</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a
+            mat-list-item
+            class="sidenav-link"
+            [routerLink]="['/comp2']"
+            (click)="drawer.toggle()"
+          >
+            <mat-icon mat-list-icon>collections</mat-icon>
+            <span class="title" mat-line>Collection Report</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a
+            mat-list-item
+            class="sidenav-link"
+            [routerLink]="['/fullscreen1']"
+            (click)="drawer.toggle()"
+          >
+            <mat-icon mat-list-icon>
+              <i class="material-icons">message</i></mat-icon
+            >
+            <span class="title" mat-line>Send Message</span>
+          </a>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+        >
+          <mat-icon class="mat-18">menu</mat-icon>
+        </button>
+        <span></span>
+        <h1 class="component-title">
+          <a class="title-link">EMI Calculator</a>
+        </h1>
+        <span class="toolbar-filler"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>notifications_none</mat-icon>
+          </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>settings</mat-icon>
+          </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>person_pin</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>volume_mute</mat-icon>
+            <span>Mute Volume</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>volume_down</mat-icon>
+            <span>Down Volume</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>volume_off</mat-icon>
+            <span>Off Volume</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Log Out</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar>
+      <!-- Add Content Here -->
+    </mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>
+</div>
